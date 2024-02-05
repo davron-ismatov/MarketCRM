@@ -21,7 +21,7 @@ public class ArrivalDocItems {
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private ArrivalDocument document;
 
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    private Set<Product> products;
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    private Product products;
 
 }

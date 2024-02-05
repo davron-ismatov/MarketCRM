@@ -19,5 +19,4 @@ import java.sql.Date;
 public class ArrivalDocumentCreateDTO {
     private Long id;
     private OrganizationDTOWithoutDocs organization;
-    private Integer doc_number;
 }

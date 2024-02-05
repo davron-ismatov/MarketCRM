@@ -6,21 +6,17 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Set;
-
-@Entity @Table(name = "categories")
+@Entity @Table(name = "units")
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Category {
+@Builder
+public class Measurement {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Column(unique = true)
-    private String name;
-
-    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
-    private Set<Product> products;
-
+    private String unit_name;
 }

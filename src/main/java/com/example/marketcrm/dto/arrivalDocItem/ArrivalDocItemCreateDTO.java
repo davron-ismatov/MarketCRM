@@ -2,6 +2,7 @@ package com.example.marketcrm.dto.arrivalDocItem;
 
 import com.example.marketcrm.dto.arrivalDoc.ArrivalDocumentCreateDTO;
 import com.example.marketcrm.dto.product.ProductCreateDTO;
+import com.example.marketcrm.dto.product.ProductWithCategoryDTO;
 import com.example.marketcrm.entity.ArrivalDocument;
 import com.example.marketcrm.entity.Product;
 import jakarta.persistence.CascadeType;
@@ -22,6 +23,5 @@ public class ArrivalDocItemCreateDTO {
     private Double arrival_price;
     private Double count;
     private ArrivalDocumentCreateDTO document;
-
-    private Set<ProductCreateDTO> products;
+    private ProductWithCategoryDTO products;
 }

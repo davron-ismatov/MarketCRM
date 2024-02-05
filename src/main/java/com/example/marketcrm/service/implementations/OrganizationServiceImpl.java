@@ -2,6 +2,7 @@ package com.example.marketcrm.service.implementations;
 
 import com.example.marketcrm.dto.organization.OrganizationCreateDTO;
 import com.example.marketcrm.dto.organization.OrganizationDTO;
+import com.example.marketcrm.entity.Organization;
 import com.example.marketcrm.mapper.organization.OrganizationCreateMapper;
 import com.example.marketcrm.mapper.organization.OrganizationMapper;
 import com.example.marketcrm.mapper.organization.OrganizationWithoutDocsMapper;
@@ -29,21 +30,31 @@ public class OrganizationServiceImpl implements OrganizationService {
 
     @Override
     public OrganizationDTO getOrganization(Long id) {
-        return null;
+        return mapper.toDTO(
+                repository.getReferenceById(id)
+        );
     }
 
     @Override
     public OrganizationDTO createOrganization(OrganizationCreateDTO createDTO) {
-        return null;
+        return mapper.toDTO(
+                repository.save(createMapper.toEntity(createDTO))
+        );
     }
 
     @Override
     public OrganizationDTO updateOrganization(Long id, OrganizationCreateDTO createDTO) {
-        return null;
+        Organization organization = repository.getReferenceById(id);
+        organization.setOrganization_name(createDTO.getOrganization_name());
+        organization.setAddress(createDTO.getAddress());
+        organization.setDescription(createDTO.getDescription());
+        organization.setTellNum(createDTO.getTellNum());
+        repository.save(organization);
+        return mapper.toDTO(organization);
     }
 
     @Override
     public void deleteOrganization(Long id) {
-
+        repository.deleteById(id);
     }
 }

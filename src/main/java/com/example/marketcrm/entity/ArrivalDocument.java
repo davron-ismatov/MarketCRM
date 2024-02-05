@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity @Table(name = "arrival_documents")
 @Data
@@ -24,8 +25,8 @@ public class ArrivalDocument {
     @Column(columnDefinition = "date default current_date")
     private Date doc_date;
 
-    @Column(unique = true)
-    private Integer doc_number;
+    @Column(unique = true,columnDefinition = "text default 'AC_DOC_'||current_timestamp")
+    private String  doc_number;
 
     @OneToMany(mappedBy = "document")
     private Set<ArrivalDocItems> items;

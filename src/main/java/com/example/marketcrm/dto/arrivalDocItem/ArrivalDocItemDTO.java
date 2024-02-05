@@ -24,5 +24,5 @@ public class ArrivalDocItemDTO {
     private Double arrival_price;
     private Double count;
     private ArrivalDocsWithOrgDTO document;
-    private Set<ProductWithCategoryDTO> products;
+    private ProductWithCategoryDTO products;
 }

@@ -21,6 +21,6 @@ import java.util.Set;
 public class ArrivalDocumentWithoutOrgDTO {
     private Long id;
     private Date doc_date;
-    private Integer doc_number;
+    private String  doc_number;
     private Set<ArrivalDocItemWithProductsDTO> items;
 }

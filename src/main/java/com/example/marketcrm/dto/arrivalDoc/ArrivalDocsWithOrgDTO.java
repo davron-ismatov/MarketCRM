@@ -18,5 +18,5 @@ public class ArrivalDocsWithOrgDTO {
     private Long id;
     private OrganizationDTOWithoutDocs organization;
     private Date doc_date;
-    private Integer doc_number;
+    private String  doc_number;
 }
