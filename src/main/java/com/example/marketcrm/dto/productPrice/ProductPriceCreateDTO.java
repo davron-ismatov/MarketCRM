@@ -3,15 +3,13 @@ package com.example.marketcrm.dto.productPrice;
 import com.example.marketcrm.dto.product.ProductWithCategoryDTO;
 import com.example.marketcrm.entity.Product;
 import jakarta.persistence.Column;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.sql.Date;
 
 @Builder
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductPriceCreateDTO {

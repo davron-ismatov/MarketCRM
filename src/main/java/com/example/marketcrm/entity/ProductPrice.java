@@ -1,17 +1,15 @@
 package com.example.marketcrm.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Date;
 
 @Entity @Table(name = "products_price")
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -25,10 +23,17 @@ public class ProductPrice {
 
     private Double price;
 
-   @CreationTimestamp
-   @Temporal(TemporalType.DATE)
+    @CreationTimestamp
+    @Temporal(TemporalType.DATE)
     private Date date;
 
-    @Column( columnDefinition = "boolean default true",nullable = false)
+    @Column(nullable = false)
     private Boolean is_actual;
+
+    @PrePersist
+    public void prePersist() {
+        if (is_actual == null) {
+            is_actual = true;
+        }
+    }
 }

@@ -45,8 +45,8 @@ public class ArrivalDocItemsServiceImpl implements ArrivalDocItemsService {
 
     @Override
     public ArrivalDocItemDTO createDocItem(ArrivalDocItemCreateDTO createDTO) {
-        if (documentRepository.existsById(createDTO.getDocument().getId())
-            || productRepository.existsById(createDTO.getProducts().getId())){
+        if (!(documentRepository.existsById(createDTO.getDocument().getId())
+            && productRepository.existsById(createDTO.getProducts().getId()))){
             throw new NoSuchElementException();
         }
         ArrivalDocItems docItems = createMapper.toEntity(createDTO);
@@ -63,20 +63,26 @@ public class ArrivalDocItemsServiceImpl implements ArrivalDocItemsService {
 
     @Override
     public ArrivalDocItemDTO updateDocItem(Long id, ArrivalDocItemCreateDTO createDTO) {
+        if (!(documentRepository.existsById(createDTO.getDocument().getId())
+                || productRepository.existsById(createDTO.getProducts().getId()))){
+            throw new NoSuchElementException();
+        }
         ArrivalDocItems docItems = repository.getReferenceById(id);
+
+
+        docItems.setProducts(
+                productRepository.getReferenceById(docItems.getProducts().getId())
+        );
+        docItems.setDocument(
+                documentRepository.getReferenceById(docItems.getDocument().getId()));
+
 
         docItems.setArrival_price(createDTO.getArrival_price());
 
-        docItems.setDocument(ArrivalDocument.builder()
-                .id(createDTO.getDocument().getId())
-                .build());
+
 
         docItems.setCount(createDTO.getCount());
 
-        docItems.setProducts(Product.
-                 builder()
-                .id(createDTO.getProducts().getCategory().getId())
-                .build());
 
         return itemMapper.toDTO(
                 repository.save(docItems)

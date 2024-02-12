@@ -8,3 +8,5 @@ public interface EntityMapper<D,E> {
     Set<D> toDTOs(Set<E> eSet);
     Set<E> toEntities(Set<D> dSet);
 }
+
+

@@ -68,15 +68,20 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductWithCategoryDTO updateProduct(Long id, ProductCreateDTO createDTO) {
+        if (!categoryRepository.existsById(createDTO.getCategory().getId())){
+            throw new NoSuchElementException();
+        }
         Product product = repository.getReferenceById(id);
-        product.setProduct_name(createDTO.getProduct_name());
-        product.setCategory(Category.builder()
-                        .id(createDTO.getCategory().getId())
-                .build());
-        product.setUnit(Measurement.builder()
-                        .id(createDTO.getUnit().getId())
-                .build());
+        product.setCategory(
+                categoryRepository.getReferenceById(product.getCategory().getId())
+        );
+        product.setUnit(
+                measurementRepository.getReferenceById(product.getUnit().getId())
+        );
 
+        product.setProduct_name(createDTO.getProduct_name());
+
+        product.setAmount(createDTO.getAmount());
         return mapper.toDTO(
                 repository.save(product)
         );

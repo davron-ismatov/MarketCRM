@@ -1,15 +1,13 @@
 package com.example.marketcrm.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 
 @Entity @Table(name = "organizations")
-@Data
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,6 +21,6 @@ public class Organization {
     private String tellNum;
     private String description;
 
-    @OneToMany(mappedBy = "organization")
+    @OneToMany(mappedBy = "organization",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private Set<ArrivalDocument> documents;
 }

@@ -43,7 +43,7 @@ public class ArrivalDocumentsServiceImpl implements ArrivalDocumentsService {
 
     @Override
     public ArrivalDocDTO createDoc(ArrivalDocumentCreateDTO createDTO) {
-        if (organizationRepository.existsById(createDTO.getOrganization().getId())){
+        if (!organizationRepository.existsById(createDTO.getOrganization().getId())){
             throw new NoSuchElementException();
         }
         ArrivalDocument arrivalDocument = createMapper.toEntity(createDTO);
@@ -56,11 +56,14 @@ public class ArrivalDocumentsServiceImpl implements ArrivalDocumentsService {
 
     @Override
     public ArrivalDocDTO updateDoc(Long id, ArrivalDocumentCreateDTO createDTO) {
+        if (!organizationRepository.existsById(createDTO.getOrganization().getId())){
+            throw new NoSuchElementException();
+        }
         ArrivalDocument document = repository.getReferenceById(id);
+        document.setOrganization(
+                organizationRepository.getReferenceById(createDTO.getOrganization().getId())
+        );
 
-        document.setOrganization(Organization.builder()
-                .id(createDTO.getOrganization().getId())
-                .build());
         return mapper.toDTO(
                 repository.save(document)
         );

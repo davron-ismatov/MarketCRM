@@ -1,15 +1,13 @@
 package com.example.marketcrm.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 
 @Entity @Table(name = "products")
-@Data
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +21,7 @@ public class Product {
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Category category;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "product")
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "product",fetch = FetchType.EAGER)
     private Set<ProductPrice> price;
 
     @ManyToOne(cascade = CascadeType.ALL)

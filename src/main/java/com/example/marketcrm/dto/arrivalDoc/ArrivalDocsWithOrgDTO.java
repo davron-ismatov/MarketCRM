@@ -2,16 +2,14 @@ package com.example.marketcrm.dto.arrivalDoc;
 
 import com.example.marketcrm.dto.arrivalDocItem.ArrivalDocItemWithProductsDTO;
 import com.example.marketcrm.dto.organization.OrganizationDTOWithoutDocs;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.sql.Date;
 import java.util.Set;
 
 @Builder
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ArrivalDocsWithOrgDTO {

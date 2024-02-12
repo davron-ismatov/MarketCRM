@@ -6,13 +6,11 @@ import com.example.marketcrm.dto.measurement.MeasurementDTO;
 import com.example.marketcrm.entity.Category;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.ManyToOne;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Builder
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductCreateDTO {

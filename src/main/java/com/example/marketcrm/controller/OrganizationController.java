@@ -16,6 +16,7 @@ public class OrganizationController  {
 
     @GetMapping
     public Set<OrganizationDTO> getAllOrganizations() {
+        System.out.println(service.getAllOrganizations());
         return service.getAllOrganizations();
     }
 

@@ -60,11 +60,19 @@ public class ProductPriceServiceImpl implements ProductPriceService {
 
     @Override
     public ProductPriceWithProductDTO updateProductPrice(ProductPriceCreateDTO createDTO, Long id) {
+        if (!productRepository.existsById(createDTO.getProduct().getId())){
+            throw new NoSuchElementException();
+        }
+
         ProductPrice productPrice = repository.getReferenceById(id);
-        productPrice.setProduct(Product.builder()
-                        .id(createDTO.getProduct().getId())
-                .build());
+
+        productPrice.setProduct(
+                productRepository.getReferenceById(
+                        productPrice.getProduct().getId()
+                ));
+
         productPrice.setPrice(createDTO.getPrice());
+
         return withProductMapper.toDTO(
                 repository.save(productPrice));
     }

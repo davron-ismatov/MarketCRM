@@ -1,19 +1,18 @@
 package com.example.marketcrm.dto.productPrice;
 
 import com.example.marketcrm.dto.product.ProductWithCategoryDTO;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.sql.Date;
 
 @Builder
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductPriceWithoutProductDTO {
 
+    private Long id;
     private Double price;
     private Date date;
     private Boolean is_actual;

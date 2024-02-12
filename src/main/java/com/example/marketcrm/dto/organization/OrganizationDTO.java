@@ -1,15 +1,13 @@
 package com.example.marketcrm.dto.organization;
 
 import com.example.marketcrm.dto.arrivalDoc.ArrivalDocumentWithoutOrgDTO;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 
 @Builder
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrganizationDTO {
