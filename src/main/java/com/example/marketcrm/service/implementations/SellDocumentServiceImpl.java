@@ -2,6 +2,7 @@ package com.example.marketcrm.service.implementations;
 
 import com.example.marketcrm.dto.sellDocument.SellDocumentCreateDTO;
 import com.example.marketcrm.dto.sellDocument.SellDocumentDTO;
+import com.example.marketcrm.entity.DocStatus;
 import com.example.marketcrm.mapper.sellDocument.SellDocumentCreateMapper;
 import com.example.marketcrm.mapper.sellDocument.SellDocumentMapper;
 import com.example.marketcrm.repository.SellDocumentRepository;
@@ -21,13 +22,15 @@ public class SellDocumentServiceImpl implements SellDocumentService {
     @Override
     public Set<SellDocumentDTO> getAllSellDocs() {
         return mapper.toDTOs(
-                new HashSet<>(repository.findAll())
+                repository.findArrivalDocumentByStatus(DocStatus.DONE)
         );
     }
 
     @Override
     public SellDocumentDTO getSellDoc(Long id) {
-        return mapper.toDTO(repository.getReferenceById(id));
+        return mapper.toDTO(
+                repository.findArrivalDocumentByStatusAndId(DocStatus.DONE,id)
+        );
     }
 
     @Override

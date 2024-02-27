@@ -1,6 +1,7 @@
 package com.example.marketcrm.dto.sellDocument;
 
 import com.example.marketcrm.dto.sellDocumentItem.SellDocumentItemsWithoutDocsDTO;
+import com.example.marketcrm.entity.DocStatus;
 import com.example.marketcrm.entity.SellDocumentItem;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.OneToMany;
@@ -22,4 +23,6 @@ public class SellDocumentDTO {
     private String doc_number;
     private LocalDate date;
     private Set<SellDocumentItemsWithoutDocsDTO> items;
+    private DocStatus status;
+
 }

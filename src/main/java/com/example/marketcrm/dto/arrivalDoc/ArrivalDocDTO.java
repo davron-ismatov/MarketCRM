@@ -2,6 +2,7 @@ package com.example.marketcrm.dto.arrivalDoc;
 
 import com.example.marketcrm.dto.arrivalDocItem.ArrivalDocItemWithProductsDTO;
 import com.example.marketcrm.dto.organization.OrganizationDTOWithoutDocs;
+import com.example.marketcrm.entity.DocStatus;
 import lombok.*;
 
 import java.sql.Date;
@@ -18,4 +19,5 @@ public class ArrivalDocDTO {
     private Date doc_date;
     private String  doc_number;
     private Set<ArrivalDocItemWithProductsDTO> items;
+    private DocStatus status;
 }

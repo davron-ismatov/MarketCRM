@@ -2,6 +2,7 @@ package com.example.marketcrm.service.implementations;
 
 import com.example.marketcrm.dto.returnToWarehouseDoc.ReturnToWarehouseDocCreateDTO;
 import com.example.marketcrm.dto.returnToWarehouseDoc.ReturnToWarehouseDocDTO;
+import com.example.marketcrm.entity.DocStatus;
 import com.example.marketcrm.mapper.returnToWarehouseDoc.ReturnToWarehouseDocCreateMapper;
 import com.example.marketcrm.mapper.returnToWarehouseDoc.ReturnToWarehouseDocMapper;
 import com.example.marketcrm.repository.ReturnToWarehouseDocRepository;
@@ -21,14 +22,14 @@ public class ReturnToWarehouseDocServiceImpl implements ReturnToWarehouseDocServ
     @Override
     public Set<ReturnToWarehouseDocDTO> gerAllDocs() {
         return mapper.toDTOs(
-                new HashSet<>(repository.findAll())
+                repository.findArrivalDocumentByStatus(DocStatus.DONE)
         );
     }
 
     @Override
     public ReturnToWarehouseDocDTO getDocument(Long id) {
         return mapper.toDTO(
-                repository.getReferenceById(id)
+                repository.findArrivalDocumentByStatusAndId(DocStatus.DONE,id)
         );
     }
 

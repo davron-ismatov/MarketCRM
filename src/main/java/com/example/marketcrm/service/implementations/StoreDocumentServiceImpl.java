@@ -2,6 +2,7 @@ package com.example.marketcrm.service.implementations;
 
 import com.example.marketcrm.dto.storeDocument.StoreDocumentCreateDTO;
 import com.example.marketcrm.dto.storeDocument.StoreDocumentDTO;
+import com.example.marketcrm.entity.DocStatus;
 import com.example.marketcrm.mapper.storeDocument.StoreDocumentCreateMapper;
 import com.example.marketcrm.mapper.storeDocument.StoreDocumentMapper;
 import com.example.marketcrm.repository.StoreDocumentRepository;
@@ -21,14 +22,14 @@ public class StoreDocumentServiceImpl implements StoreDocumentService {
     @Override
     public Set<StoreDocumentDTO> getAllStoreDocs() {
         return mapper.toDTOs(
-                new HashSet<>(repository.findAll())
+                repository.findArrivalDocumentByStatus(DocStatus.DONE)
         );
     }
 
     @Override
     public StoreDocumentDTO getStoreDocument(Long id) {
         return mapper.toDTO(
-                repository.getReferenceById(id)
+              repository.findArrivalDocumentByStatusAndId(DocStatus.DONE,id)
         );
     }
 

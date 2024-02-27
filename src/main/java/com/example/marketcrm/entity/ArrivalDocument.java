@@ -30,13 +30,17 @@ public class ArrivalDocument {
     @Column(unique = true)
     private String  doc_number;
 
+    @Enumerated(EnumType.STRING)
+    private DocStatus status;
+
     @OneToMany(mappedBy = "document",fetch = FetchType.EAGER)
     private Set<ArrivalDocItems> items;
 
     @PrePersist
     public void prePersist() {
-        if (doc_number==null) {
+        if (doc_number==null && status==null) {
            doc_number = "AC_DOC_" + LocalDateTime.now();
+           status = DocStatus.CREATED;
         }
     }
 }

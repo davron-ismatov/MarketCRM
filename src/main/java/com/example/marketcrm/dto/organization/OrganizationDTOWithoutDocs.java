@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 public class OrganizationDTOWithoutDocs {
     private Long id;
-    private String organization_name;
+    private String name;
     private String address;
     private String tellNum;
     private String description;

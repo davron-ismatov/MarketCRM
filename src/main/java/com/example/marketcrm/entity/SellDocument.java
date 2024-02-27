@@ -26,10 +26,13 @@ public class SellDocument {
 
     @OneToMany(mappedBy = "document",cascade = CascadeType.ALL)
     private Set<SellDocumentItem> items;
+    @Enumerated(EnumType.STRING)
+    private DocStatus status;
     @PrePersist
     public void prePersist(){
-        if (date==null){
+        if (date==null && status==null){
             date = LocalDate.now();
+            status = DocStatus.CREATED;
         }
     }
 

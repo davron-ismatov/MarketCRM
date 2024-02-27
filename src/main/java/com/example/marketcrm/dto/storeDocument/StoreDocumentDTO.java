@@ -1,6 +1,7 @@
 package com.example.marketcrm.dto.storeDocument;
 
 import com.example.marketcrm.dto.storeDocumentItem.StoreDocItemsWithoutDocDTO;
+import com.example.marketcrm.entity.DocStatus;
 import lombok.*;
 
 import java.sql.Date;
@@ -16,4 +17,6 @@ public class StoreDocumentDTO {
     private String doc_number;
     private Date date;
     private Set<StoreDocItemsWithoutDocDTO> items;
+    private DocStatus status;
+
 }

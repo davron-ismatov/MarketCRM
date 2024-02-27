@@ -26,12 +26,15 @@ public class ReturnToWarehouseDoc {
     @Temporal(TemporalType.DATE)
     private Date date;
 
+    @Enumerated(EnumType.STRING)
+    private DocStatus status;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "document")
     private Set<ReturnToWarehouseDocItems> items;
     @PrePersist
     public void prePersist(){
-        if (doc_number==null){
+        if (doc_number==null && status==null){
             doc_number = "RTW_DOC_" + LocalDate.now();
+            status = DocStatus.CREATED;
         }
     }
 }

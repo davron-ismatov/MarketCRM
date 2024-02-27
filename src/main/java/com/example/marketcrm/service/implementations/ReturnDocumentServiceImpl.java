@@ -2,6 +2,7 @@ package com.example.marketcrm.service.implementations;
 
 import com.example.marketcrm.dto.returnDocument.ReturnDocumentCreateDTO;
 import com.example.marketcrm.dto.returnDocument.ReturnDocumentDTO;
+import com.example.marketcrm.entity.DocStatus;
 import com.example.marketcrm.mapper.returnDocument.ReturnDocCreateMapper;
 import com.example.marketcrm.mapper.returnDocument.ReturnDocumentMapper;
 import com.example.marketcrm.repository.ReturnDocRepository;
@@ -21,14 +22,14 @@ public class ReturnDocumentServiceImpl implements ReturnDocumentService {
     @Override
     public Set<ReturnDocumentDTO> getAllDocuments() {
         return mapper.toDTOs(
-                new HashSet<>(repository.findAll())
+               repository.findArrivalDocumentByStatus(DocStatus.DONE)
         );
     }
 
     @Override
     public ReturnDocumentDTO getDocument(Long id) {
         return mapper.toDTO(
-                repository.getReferenceById(id)
+                repository.findArrivalDocumentByStatusAndId(DocStatus.DONE,id)
         );
     }
 

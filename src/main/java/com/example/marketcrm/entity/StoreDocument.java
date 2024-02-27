@@ -26,13 +26,17 @@ public class StoreDocument {
     @Temporal(TemporalType.DATE)
     private Date date;
 
+    @Enumerated(EnumType.STRING)
+    private DocStatus status;
+
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "document")
     private Set<StoreDocumentItems> items;
 
     @PrePersist
     public void prePersist(){
-        if (doc_number==null){
+        if (doc_number==null && status==null){
             doc_number = "ST_DOC_" + LocalDateTime.now();
+            status = DocStatus.CREATED;
         }
     }
 }

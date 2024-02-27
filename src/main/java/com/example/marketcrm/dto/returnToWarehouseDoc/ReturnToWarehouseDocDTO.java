@@ -1,6 +1,7 @@
 package com.example.marketcrm.dto.returnToWarehouseDoc;
 
 import com.example.marketcrm.dto.returnToWarehouseDocItems.ReturnToWarehouseDocItemsWithoutDocsDTO;
+import com.example.marketcrm.entity.DocStatus;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.*;
@@ -19,4 +20,6 @@ public class ReturnToWarehouseDocDTO {
     private String doc_number;
     private Date date;
     private Set<ReturnToWarehouseDocItemsWithoutDocsDTO> items;
+    private DocStatus status;
+
 }

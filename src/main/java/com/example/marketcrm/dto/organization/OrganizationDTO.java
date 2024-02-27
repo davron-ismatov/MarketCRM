@@ -12,7 +12,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class OrganizationDTO {
     private Long id;
-    private String organization_name;
+    private String name;
     private String address;
     private String tellNum;
     private String description;

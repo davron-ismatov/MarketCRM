@@ -2,6 +2,7 @@ package com.example.marketcrm.dto.returnDocument;
 
 
 import com.example.marketcrm.dto.returnDocItems.ReturnDocItemsWithoutDocsDTO;
+import com.example.marketcrm.entity.DocStatus;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.*;
@@ -20,4 +21,6 @@ public class ReturnDocumentDTO {
     private String doc_number;
     private Date date;
     private Set<ReturnDocItemsWithoutDocsDTO> items;
+    private DocStatus status;
+
 }

@@ -3,6 +3,7 @@ package com.example.marketcrm.controller;
 import com.example.marketcrm.dto.arrivalDocItem.ArrivalDocItemCreateDTO;
 import com.example.marketcrm.dto.arrivalDocItem.ArrivalDocItemDTO;
 import com.example.marketcrm.service.ArrivalDocItemsService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,9 +11,10 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/arrival-doc-item")
+@RequiredArgsConstructor
 public class ArrivalDocItemsController {
-    @Autowired
-    private ArrivalDocItemsService service;
+
+    private final ArrivalDocItemsService service;
     @GetMapping
     public Set<ArrivalDocItemDTO> getAllDocItems() {
         return service.getAllDocItems();

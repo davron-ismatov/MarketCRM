@@ -3,6 +3,7 @@ package com.example.marketcrm.controller;
 import com.example.marketcrm.dto.returnDocItems.ReturnDocItemsCreateDTO;
 import com.example.marketcrm.dto.returnDocItems.ReturnDocItemsDTO;
 import com.example.marketcrm.service.ReturnDocumentItemsService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,13 +11,11 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("/return-doc-items")
+@RequiredArgsConstructor
 public class ReturnDocItemsController{
     private final ReturnDocumentItemsService service;
 
-    @Autowired
-    public ReturnDocItemsController(ReturnDocumentItemsService service) {
-        this.service = service;
-    }
+
 
     @GetMapping
     public Set<ReturnDocItemsDTO> getAllItems() {

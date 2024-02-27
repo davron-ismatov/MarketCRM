@@ -16,7 +16,7 @@ public class Organization {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(unique = true)
-    private String organization_name;
+    private String name;
     private String address;
     private String tellNum;
     private String description;

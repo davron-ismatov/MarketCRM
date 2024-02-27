@@ -3,6 +3,7 @@ package com.example.marketcrm.service.implementations;
 import com.example.marketcrm.dto.arrivalDoc.ArrivalDocDTO;
 import com.example.marketcrm.dto.arrivalDoc.ArrivalDocumentCreateDTO;
 import com.example.marketcrm.entity.ArrivalDocument;
+import com.example.marketcrm.entity.DocStatus;
 import com.example.marketcrm.entity.Organization;
 import com.example.marketcrm.mapper.arrivalDoc.ArrivalDocMapper;
 import com.example.marketcrm.mapper.arrivalDoc.ArrivalDocsWithOrgMapper;
@@ -30,14 +31,14 @@ public class ArrivalDocumentsServiceImpl implements ArrivalDocumentsService {
     @Override
     public Set<ArrivalDocDTO> getAllDocs() {
         return mapper.toDTOs(
-                new HashSet<>(repository.findAll())
+                repository.findArrivalDocumentByStatus(DocStatus.DONE)
         );
     }
 
     @Override
     public ArrivalDocDTO getDoc(Long id) {
         return mapper.toDTO(
-                repository.getReferenceById(id)
+                repository.findArrivalDocumentByStatusAndId(DocStatus.DONE,id)
         );
     }
 

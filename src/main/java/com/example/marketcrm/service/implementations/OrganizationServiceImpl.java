@@ -45,7 +45,7 @@ public class OrganizationServiceImpl implements OrganizationService {
     @Override
     public OrganizationDTO updateOrganization(Long id, OrganizationCreateDTO createDTO) {
         Organization organization = repository.getReferenceById(id);
-        organization.setOrganization_name(createDTO.getOrganization_name());
+        organization.setName(createDTO.getName());
         organization.setAddress(createDTO.getAddress());
         organization.setDescription(createDTO.getDescription());
         organization.setTellNum(createDTO.getTellNum());
